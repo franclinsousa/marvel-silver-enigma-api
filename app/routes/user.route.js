@@ -1,6 +1,7 @@
 const { Router } = require("express")
 
-const { userController } = require("../controllers")
+const {passport} = require("../middlewares")
+const { userController: controller } = require("../controllers")
 
 
 /**
@@ -14,19 +15,19 @@ router
         /**
          * Endpoint para cadastro de usuários
          */
-        .post(userController.register)
+        .post(controller.register)
 
         /**
          * Endpoint para obter uma lista de usuários
          */
-        .get(userController.list)
+        .get(passport.auth, controller.list)
 
 router
     .route(`/:id`)
         /**
          * Endpoint para editar um usuário
          */
-        .put(userController.update)
+        .put(passport.auth, controller.update)
 
 
 module.exports = router

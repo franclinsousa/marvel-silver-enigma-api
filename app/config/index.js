@@ -1,4 +1,5 @@
 const { db, dbConfig } = require("./db")
+const env = require("./varenvs")
 
 
 function registerConfigs() {
@@ -7,6 +8,7 @@ function registerConfigs() {
 
 
 module.exports = {
+    env,
     db,
     registerConfigs,
 }
