@@ -1,5 +1,5 @@
 const {Request, Response, NextFunction} = require("express")
-const service = require("../services").userService
+const {userService: service} = require("../services")
 
 
 const userController = {
@@ -20,6 +20,31 @@ const userController = {
             next(new Error("Usuário inválido"))
         }
     },
+
+    /**
+     * Alterar informações de usuário
+     * @param {Request} req
+     * @param {Response} res
+     * @param {NextFunction} next
+     */
+    update: (req, res, next) => {
+        service.edit(req.params.id, req.body).then((user) => {
+            res.status(200).send(user)
+        })
+    },
+
+    /**
+     * Obtem uma lista de usuários
+     * @param {Request} req
+     * @param {Response} res
+     * @param {NextFunction} next
+     */
+    list: (req, res, next) => {
+        service.list().then((its) => {
+            res.status(200).send(its)
+        })
+    },
+
 
 }
 

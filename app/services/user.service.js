@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt")
-const {UserModel} = require("../models")
+const {UserModel: model} = require("../models")
 
 
 const userService = {
@@ -15,7 +15,23 @@ const userService = {
         } catch (e) {
             return Promise.reject(e)
         }
-        return UserModel.create(user)
+        return model.create(user)
+    },
+
+    /**
+     * @return {Promise<Array<IUser>>}
+     */
+    list() {
+        return model.findAll()
+    },
+
+    /**
+     * @param {number} id
+     * @param {IUser} userEdited
+     * @return {Promise<IUser>}
+     */
+    edit(id, userEdited) {
+        return model.findByPk(id).then((user) => ( user.update(userEdited) ))
     },
 
 }
