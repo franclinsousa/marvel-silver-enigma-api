@@ -1,6 +1,7 @@
 let express = require("express")
 let morgan = require("morgan")
-let { router } = require("./routes")
+let registerRouter = require("./routes")
+let { registerConfigs } = require("./config")
 
 
 /**
@@ -11,9 +12,11 @@ let app = express()
 
 app.use(morgan("combined"))
 app.use(express.json())
+
 app.use(express.urlencoded({ extended: false }))
 
-app.use("/api", router)
+registerRouter(app)
+registerConfigs()
 
 
 module.exports = app
