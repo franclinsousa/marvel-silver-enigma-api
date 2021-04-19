@@ -23,6 +23,7 @@
     "test": "jest -i --coverage"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "debug": "^4.3.1",
     "express": "^4.17.1",

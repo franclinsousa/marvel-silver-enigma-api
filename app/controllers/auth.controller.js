@@ -4,7 +4,7 @@ const {authService: service} = require("../services")
 
 const authController = {
     /**
-     * Registrar novo usuário
+     * Login e gerar token
      * @param {Request} req
      * @param {Response} res
      * @param {NextFunction} next
