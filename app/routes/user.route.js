@@ -9,24 +9,13 @@ const { userController: controller } = require("../controllers")
  */
 const router = Router()
 
-
 router
     .route(``)
-        /**
-         * Endpoint para cadastro de usuários
-         */
         .post(controller.register)
-
-        /**
-         * Endpoint para obter uma lista de usuários
-         */
         .get(passport.auth, controller.list)
 
 router
     .route(`/:id`)
-        /**
-         * Endpoint para editar um usuário
-         */
         .put(passport.auth, controller.update)
 
 

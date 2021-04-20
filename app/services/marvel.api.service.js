@@ -17,7 +17,7 @@ const axios = _axios.create({
 })
 
 const getParamsAuth = () => {
-    const ts = 1
+    const ts = Date.now()
     const privateKey = env.marvel.apiPrivateKey
     const apiKey = env.marvel.apiPublicKey
     const hash = crypto.createHash("md5").update(ts + privateKey + apiKey).digest("hex")
@@ -50,9 +50,29 @@ axios.interceptors.request.use(request => {
 })
 
 
+/**
+ * @typedef MarvelResponseApi MarvelResponseApi
+ * @type {Object}
+ * @property {Number} code
+ * @property {String} status
+ * @property {String} copyright
+ * @property {String} attributionText
+ * @property {String} attributionHTML
+ * @property {String} etag
+ * @property {Object} data
+ * @property {Number} data.offset
+ * @property {Number} data.limit
+ * @property {Number} data.total
+ * @property {Number} data.count
+ * @property {Array<Object>} data.results
+ */
+
+/**
+ * Marvel API Service
+ */
 const marvelApiService = {
     /**
-     * @return {Promise<AxiosResponse<MarvelResponseApi>>}
+     * @return {Promise<AxiosResponse<MarvelResponseApi>, Error>}
      */
     fetchListComics: (limit, offset) => {
         return axios.get("/comics", {

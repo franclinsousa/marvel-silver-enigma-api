@@ -5,9 +5,9 @@ const {User: model} = require("../models")
 const userService = {
 
     /**
-     * Persiste um novo usuário
-     * @param {IUser} user
-     * @return {Promise<IUser>}
+     * Create new user.
+     * @param {User} user
+     * @return {Promise<User>}
      */
     create(user) {
         try {
@@ -19,29 +19,32 @@ const userService = {
     },
 
     /**
-     * @return {Promise<Array<IUser>>}
+     * List of users.
+     * @return {Promise<Array<User>>}
      */
     list() {
         return model.findAll()
     },
 
     /**
-     * @param {number} id
-     * @param {IUser} userEdited
-     * @return {Promise<IUser>}
+     * Edit user by id.
+     * @param {Number} id
+     * @param {User} user
+     * @return {Promise<User>}
      */
-    edit(id, userEdited) {
-        return model.findByPk(id).then((user) => user.update(userEdited))
+    edit(id, user) {
+        return model.findByPk(id).then((user) => user.update(user))
     },
 
     /**
-     * @param {string} username
-     * @return {Promise<IUser>}
+     * Find user by username.
+     * @param {String} username
+     * @return {Promise<User>}
      */
     findByUsername(username) {
         return model.findOne({where: {username}}).then((user) => {
             if (user) return user
-            throw new Error(`Usuário com username '${username}' não encontrado.`)
+            throw new Error(`User with username '${username}' not found.`)
         })
     }
 

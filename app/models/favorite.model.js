@@ -1,12 +1,15 @@
-const {Model, STRING, ENUM, NUMBER} = require("sequelize")
+const {Model, ENUM, NUMBER} = require("sequelize")
 
 const { db } = require("../config")
 const User = require("./user.model")
 
 
 /**
+ * @property {Number} id
+ * @property {"comics" | "characters"} type
+ * @property {Number} elementId Identity of element type favorite
+ * @property {Number} userId Identifier of the user you favored. User Model.
  * @extends {Model}
- * @implements {IFavorite}
  */
 class Favorite extends Model {}
 

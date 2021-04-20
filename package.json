@@ -11,7 +11,7 @@
   },
   "homepage": "http://marvel.francl.in",
   "repository": {
-    "url": "https://github.com/franclinsousa/marvel-silver-enigma.git"
+    "url": "https://github.com/franclinsousa/marvel-silver-enigma-api.git"
   },
   "engines": {
     "node": "14.x"
@@ -25,6 +25,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
     "debug": "^4.3.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",

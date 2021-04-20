@@ -10,7 +10,7 @@ const router = Router()
 
 router
     .route("/token")
-    .post(controller.login)
+        .post(controller.login)
 
 
 module.exports = router

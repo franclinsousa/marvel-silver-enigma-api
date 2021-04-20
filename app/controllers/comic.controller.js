@@ -5,7 +5,7 @@ const {marvelApiService, favoriteService} = require("../services")
 
 const comicController = {
     /**
-     * Obtém lista de Comics
+     * Get list of comics.
      * @param {Request} req
      * @param {Response} res
      * @param {NextFunction} next
@@ -20,7 +20,7 @@ const comicController = {
     },
 
     /**
-     * Favoritar Comic
+     * Favorite Comic.
      * @param {Request} req
      * @param {Response} res
      * @param {NextFunction} next
@@ -38,7 +38,7 @@ const comicController = {
     },
 
     /**
-     * Desfavoritar Comic
+     * Unfavorite Comic.
      * @param {Request} req
      * @param {Response} res
      * @param {NextFunction} next
@@ -56,7 +56,7 @@ const comicController = {
     },
 
     /**
-     * Lista de Comics favoritos
+     * Get list of favorite comics.
      * @param {Request} req
      * @param {Response} res
      * @param {NextFunction} next

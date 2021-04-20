@@ -10,7 +10,6 @@ const jwtStrategyOpt = {
     secretOrKey: env.secret
 }
 const fnVerify = (payload, done) => {
-    console.log("Chegou aqui mané")
     userService.findByUsername(payload.sub)
         .then((user) => {
             done(null, user, {})
@@ -20,7 +19,7 @@ const fnVerify = (payload, done) => {
 }
 const strategy = new Strategy(jwtStrategyOpt, fnVerify)
 
-passport.use(strategy)
+passport.use("jwt", strategy)
 
 const auth = passport.authenticate("jwt", {session: false})
 
