@@ -1,7 +1,15 @@
 
 interface IUser {
+    id: number
     username: string
     password: string
+}
+
+interface IFavorite {
+    id: number,
+    elementId: number,
+    type: "comics" | "characters"
+    userId: number,
 }
 
 interface MarvelResponseApi {

@@ -1,6 +1,8 @@
-const UserModel = require("./user.model")
+const User = require("./user.model")
+const Favorite = require("./favorite.model")
 
 
 module.exports = {
-    UserModel,
+    User,
+    Favorite,
 }

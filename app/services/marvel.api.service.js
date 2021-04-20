@@ -9,6 +9,7 @@ const axios = _axios.create({
     baseURL: env.marvel.apiEndpoint + "/v1/public",
     headers: {
         accept: "*/*",
+        "Accept-Encoding": "gzip"
     },
     validateStatus: status => {
         return status < 400

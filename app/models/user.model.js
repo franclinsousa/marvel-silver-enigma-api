@@ -6,9 +6,9 @@ const { db } = require("../config")
  * @extends {Model}
  * @implements {IUser}
  */
-class UserModel extends Model {}
+class User extends Model {}
 
-UserModel.init({
+User.init({
     username: {
         type: STRING,
         allowNull: false,
@@ -24,4 +24,4 @@ UserModel.init({
 })
 
 
-module.exports = UserModel
+module.exports = User

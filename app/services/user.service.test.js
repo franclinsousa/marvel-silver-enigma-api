@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt")
 const {ValidationError} = require("sequelize")
-const {UserModel: model} = require("../models")
+const {User: model} = require("../models")
 const service = require("./user.service")
 
 describe("User Service", function () {

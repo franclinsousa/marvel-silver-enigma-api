@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt")
-const {UserModel: model} = require("../models")
+const {User: model} = require("../models")
 
 
 const userService = {

@@ -13,7 +13,7 @@ const fn = (app) => {
 
     app.use("/api/users", userRoute)
     app.use("/api/auth", authRoute)
-    app.use("/api/comic", comicRoute)
+    app.use("/api/comics", comicRoute)
 
     app.use(errorHandlers.general)
 }
