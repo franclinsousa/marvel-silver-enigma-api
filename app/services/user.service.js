@@ -29,11 +29,12 @@ const userService = {
     /**
      * Edit user by id.
      * @param {Number} id
-     * @param {User} user
+     * @param {Object} user
      * @return {Promise<User>}
      */
     edit(id, user) {
-        return model.findByPk(id).then((user) => user.update(user))
+        return model.findByPk(id)
+            .then(userFound => userFound.update(model.toInfoEditable(user)))
     },
 
     /**
@@ -44,7 +45,7 @@ const userService = {
     findByUsername(username) {
         return model.findOne({where: {username}}).then((user) => {
             if (user) return user
-            throw new Error(`User with username '${username}' not found.`)
+            return Promise.reject(`User with username '${username}' not found.`)
         })
     }
 

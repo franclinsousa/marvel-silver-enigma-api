@@ -15,8 +15,12 @@ router
         .get(passport.auth, controller.list)
 
 router
-    .route(`/:id`)
+    .route(`/me`)
         .put(passport.auth, controller.update)
+
+router
+    .route("/me")
+        .get(passport.auth, controller.me)
 
 
 module.exports = router

@@ -24,17 +24,32 @@ const userController = {
     },
 
     /**
-     * Change user information.
+     * Get current user.
+     * @param {Request} req
+     * @param {Response} res
+     * @param {NextFunction} next
+     */
+    me: (req, res, next) => {
+        /**
+         * @type {User}
+         */
+        const user = req.user
+        res.status(201).send(user.toDTO())
+    },
+
+    /**
+     * Change current user information.
      * @param {Request} req
      * @param {Response} res
      * @param {NextFunction} next
      */
     update: (req, res, next) => {
-        service.edit(req.params.id, req.body)
+        service.edit(req.user.id, req.body)
             .then(_ => _.toDTO())
             .then((user) => {
                 res.status(200).send(user)
             })
+            .catch(next)
     },
 
     /**
