@@ -11,8 +11,23 @@ const comicController = {
      * @param {NextFunction} next
      */
     list: (req, res, next) => {
-        const {limit, offset} = req.query
-        marvelApiService.fetchListComics(limit, offset).then((mResp) => {
+        const {limit, offset, title} = req.query
+        marvelApiService.fetchListComics(limit, offset, title).then((mResp) => {
+            res
+                .status(mResp.status)
+                .send(mResp.data)
+        }).catch(next)
+    },
+
+    /**
+     * Get list of comics.
+     * @param {Request} req
+     * @param {Response} res
+     * @param {NextFunction} next
+     */
+    getById: (req, res, next) => {
+        const {comicId} = req.params
+        marvelApiService.getComicById(comicId).then((mResp) => {
             res
                 .status(mResp.status)
                 .send(mResp.data)

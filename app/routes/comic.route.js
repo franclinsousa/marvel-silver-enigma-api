@@ -14,6 +14,10 @@ router
         .get(passport.auth, controller.list)
 
 router
+    .route("/:comicId")
+        .get(passport.auth, controller.getById)
+
+router
     .route("/favorites")
         .get(passport.auth, controller.favorites)
 

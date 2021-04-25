@@ -27,20 +27,7 @@ const getParamsAuth = () => {
         hash: hash,
     }
 }
-const defineEtag = (etag) => {
-    axios.defaults.headers["If-None-Match"] = etag
-}
-const getEtag = () => {
-    return axios.defaults.headers["If-None-Match"]
-}
 
-axios.interceptors.response.use(response => {
-    const etag = response.data["etag"]
-    if(etag && etag !== getEtag()){
-        defineEtag(etag)
-    }
-    return response
-})
 axios.interceptors.request.use(request => {
     request.params = {
         ...getParamsAuth(),
@@ -74,13 +61,24 @@ const marvelApiService = {
     /**
      * @return {Promise<AxiosResponse<MarvelResponseApi>, Error>}
      */
-    fetchListComics: (limit, offset) => {
+    fetchListComics: (limit, offset, title) => {
         return axios.get("/comics", {
             params: {
                 limit,
                 offset,
+                title,
+                format: "comic",
+                noVariants: true,
+                orderBy: "-focDate",
+                formatType: "comic"
             }
         })
+    },
+    /**
+     * @return {Promise<AxiosResponse<MarvelResponseApi>, Error>}
+     */
+    getComicById: (id) => {
+        return axios.get(`/comics/${id}`)
     },
 }
 
