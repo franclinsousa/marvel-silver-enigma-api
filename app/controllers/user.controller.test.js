@@ -28,6 +28,7 @@ describe(`User Controller`, () => {
     describe("Create Users", () => {
 
         it('should request create new user', async function () {
+            userMock.toDTO = jest.fn().mockReturnValue({})
             serviceMock.mockImplementation(() => Promise.resolve(userMock))
             const res = mockResponse()
             const req = {
@@ -36,8 +37,7 @@ describe(`User Controller`, () => {
 
             await controller.register(req, res, null)
 
-            expect(res.send).toBeCalledWith(userMock)
-            expect(res.status).toBeCalledWith(201)
+            expect(userMock.toDTO).toBeCalled()
         })
 
         it('should not accept create user blank', async function () {
@@ -46,7 +46,7 @@ describe(`User Controller`, () => {
             const req = {
                 body: {}
             }
-            const error = new Error("Usuário inválido")
+            const error = new Error("Invalid user.")
             const next = jest.fn().mockImplementation((err) => error)
 
             await controller.register(req, res, next)
