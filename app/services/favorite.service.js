@@ -37,7 +37,7 @@ const favoriteService = {
      * Unfavorite Comic.
      * @param {User} user
      * @param {Number} comicId
-     * @return {Promise<Array<IFavorite>>}
+     * @return {Promise<Array<Favorite>>}
      */
     unfavoriteComic(user, comicId) {
         return Favorite
@@ -60,7 +60,7 @@ const favoriteService = {
     /**
      * List of Favorite Comics.
      * @param {User} user
-     * @return {Promise<Array<IFavorite>>}
+     * @return {Promise<Array<Favorite>>}
      */
     favoritesComicsByUser(user) {
         return Favorite

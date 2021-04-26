@@ -77,7 +77,6 @@ const comicController = {
      * @param {NextFunction} next
      */
     favorites: (req, res, next) => {
-        const {comicId} = req.params
         const user = req.user
         favoriteService.favoritesComicsByUser(user)
             .then(_ =>
